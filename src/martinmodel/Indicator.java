@@ -13,8 +13,7 @@ public class Indicator {
     
     int track = 0;
     
-    Indicator(int t){
-        track = t;
+    Indicator(){
     }
     
     synchronized boolean on(){
