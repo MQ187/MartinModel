@@ -1,5 +1,9 @@
 package martinmodel;
 
+/**
+ *
+ * @author moq
+ */
 class Enemy implements Runnable { 
     
     EnterSensor enSensor;
@@ -23,7 +27,7 @@ class Enemy implements Runnable {
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e){
-        
+            
         }
     } 
 }

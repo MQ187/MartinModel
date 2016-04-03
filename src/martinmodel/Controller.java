@@ -5,20 +5,23 @@ package martinmodel;
  * @author moq
  */
 class Controller {
+    private int MAX = 0;
     private int eCount = 0;
     private boolean canEnter = false;
     private Indicator warning;
     private Gate gate;
     private ExitSensor roadSensor;
 
-    Controller(Gate g, ExitSensor road, Indicator w){
+    Controller(int m, Gate g, ExitSensor road, Indicator w){
+        MAX = m;
         gate = g;
         roadSensor = road;
         warning = w;
     }
   
     synchronized void enemyPass(int id) throws InterruptedException{
-        while(canEnter) wait();
+        while(eCount >= MAX || canEnter) wait();
+        
         gate.pass(id);
         ++eCount;
         
@@ -36,8 +39,11 @@ class Controller {
     }
     
     synchronized void gateRaise() throws InterruptedException{
+        while(canEnter) wait();
+        
         canEnter = false;
         gate.raise();
+        notifyAll();
     }
     
     synchronized void gateLower() throws InterruptedException{

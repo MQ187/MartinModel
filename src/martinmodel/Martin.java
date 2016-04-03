@@ -1,5 +1,9 @@
 package martinmodel;
 
+/**
+ *
+ * @author moq
+ */
 class Martin  implements Runnable { 
     
     EnterSensor marSensor;

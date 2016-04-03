@@ -27,7 +27,7 @@ public class MartinModel{
         i = new Indicator();
         
         gate = new Gate();
-        c = new Controller(gate, road, i);
+        c = new Controller(MAX_ENEMIES, gate, road, i);
         
         enemies = new Thread[MAX_ENEMIES];
         martin = new Thread(new Martin(c, marSensor, house));
@@ -36,9 +36,8 @@ public class MartinModel{
         }
         
         for (int i = 0; i<MAX_ENEMIES; i++) {
-            martin.run();
             enemies[i].run();
-            
+            martin.run();        
         }
       
     }
