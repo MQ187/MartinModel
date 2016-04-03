@@ -27,10 +27,10 @@ public class MartinModel{
         i = new Indicator();
         
         gate = new Gate();
-        c = new Controller(MAX_ENEMIES, gate, road, i);
+        c = new Controller(gate, road, i);
         
         enemies = new Thread[MAX_ENEMIES];
-        martin = new Thread(new Martin(c, marSensor, house, road));
+        martin = new Thread(new Martin(c, marSensor, house));
         for (int i = 0; i < MAX_ENEMIES; i++) {
             enemies[i] = new Thread(new Enemy(c,i+1,enSensor));
         }
@@ -38,6 +38,7 @@ public class MartinModel{
         for (int i = 0; i<MAX_ENEMIES; i++) {
             martin.run();
             enemies[i].run();
+            
         }
       
     }
@@ -50,10 +51,7 @@ public class MartinModel{
     }
     
       public static void main(String[] args) throws InterruptedException {
-      
           MartinModel mModel = new MartinModel();
           mModel.start();
-          
-      
       }
  }

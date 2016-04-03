@@ -16,18 +16,14 @@ public class Indicator {
     Indicator(){
     }
     
-    synchronized boolean on(){
-        if(track >= 1){
-            return true;
-        }else{
-            return false;
-        }
+    synchronized void on(){
+         System.out.println("indicator.on");
+         notifyAll();
     }
     
-    synchronized boolean off() throws InterruptedException{
-        while(track > 0) wait();
-        
-        return true;
+    synchronized void off() throws InterruptedException{
+        System.out.println("indicator.off");
+        notifyAll();
     }
     
 }

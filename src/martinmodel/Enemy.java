@@ -19,7 +19,7 @@ class Enemy implements Runnable {
                 Thread.sleep(500);
                 enSensor.enter(1);
                 Thread.sleep(1000);
-                controller.roadExit();
+                controller.roadExit(1);
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e){
