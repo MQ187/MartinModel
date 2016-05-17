@@ -19,7 +19,7 @@ public class MartinModel{
     ExitSensor road, house;
     Indicator i;
     
-    public void start() {
+    public void begin() {
         enSensor = new EnterSensor();
         marSensor = new EnterSensor();
         road = new ExitSensor();
@@ -36,8 +36,8 @@ public class MartinModel{
         }
         
         for (int i = 0; i<MAX_ENEMIES; i++) {
-            enemies[i].run();
-            martin.run();        
+            enemies[i].start();
+            martin.start();        
         }
       
     }
@@ -51,6 +51,6 @@ public class MartinModel{
     
       public static void main(String[] args) throws InterruptedException {
           MartinModel mModel = new MartinModel();
-          mModel.start();
+          mModel.begin();
       }
  }
